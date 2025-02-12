@@ -26,7 +26,7 @@
     "build-dom-scripts": "tsx lib/dom/genDomScripts.ts",
     "build-types": "tsc --emitDeclarationOnly --outDir dist",
     "build-js": "tsup lib/index.ts --dts",
-    "build": "npm run lint && npm run build-dom-scripts && npm run build-js && npm run build-types",
+    "build": "npm run build-dom-scripts && npm run build-js && npm run build-types",
     "lint": "npm run prettier && npm run eslint",
     "release": "npm run build && changeset publish",
     "release-canary": "npm run build && changeset version --snapshot && changeset publish --tag alpha"
