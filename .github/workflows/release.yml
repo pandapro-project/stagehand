@@ -32,6 +32,7 @@ jobs:
 
       - name: Build
         run: pnpm build
+      - run: npm login --scope=@pandapro-project --auth-type=legacy --registry=https://npm.pkg.github.com
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
