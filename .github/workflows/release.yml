@@ -37,7 +37,7 @@ jobs:
       - name: Configure .npmrc
         run: |
           echo "@pandapro-project:registry=https://npm.pkg.github.com" > .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GT_TOKEN }}" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=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" >> .npmrc
 
       - name: View .npmrc
         run: cat .npmrc  # 输出 .npmrc 文件内容
