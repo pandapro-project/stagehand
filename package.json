@@ -1,5 +1,5 @@
 {
-  "name": "@nstbrowser/stagehand",
+  "name": "@pandapro-project/stagehand",
   "version": "1.0.4",
   "description": "An AI web browsing framework focused on simplicity and extensibility.",
   "main": "./dist/index.js",
