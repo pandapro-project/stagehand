@@ -44,6 +44,8 @@ jobs:
 
       - name: Npm Login
         run: npm login --registry=https://npm.pkg.github.com --scope=@pandapro-project
+        env:
+          NODE_AUTH_TOKEN: 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
 
       - name: Npm Publish
         run: npm publish
