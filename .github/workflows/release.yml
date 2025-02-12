@@ -24,11 +24,19 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@pandapro-project'
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Set Config
+        run: pnpm config set strict-ssl false
+
       - name: Install
-        run: npm i
+        run: pnpm install
 
       - name: Build
-        run: npm run build
+        run: pnpm build
 
       - name: Npm Publish
         run: npm publish
