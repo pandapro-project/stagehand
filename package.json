@@ -94,5 +94,8 @@
   "bugs": {
     "url": "https://github.com/pandapro-project/stagehand/issues"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "homepage": "https://github.com/pandapro-project/stagehand#readme"
 }
