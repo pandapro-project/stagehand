@@ -37,7 +37,6 @@ jobs:
       - name: Configure .npmrc
         run: |
           echo "@pandapro-project:registry=https://npm.pkg.github.com" > .npmrc
-          echo "//npm.pkg.github.com/:_authToken=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" >> .npmrc
 
       - name: View .npmrc
         run: cat .npmrc  # 输出 .npmrc 文件内容
@@ -50,4 +49,4 @@ jobs:
       - name: Npm Publish
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: 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
+          NODE_AUTH_TOKEN: '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'
