@@ -4,6 +4,7 @@
 name: Node.js Package
 
 on:
+  workflow_dispatch:  # 允许手动触发
   release:
     types: [created]
 
