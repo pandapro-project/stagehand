@@ -32,8 +32,14 @@ jobs:
 
       - name: Build
         run: pnpm build
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.GT_TOKEN }}" > .npmrc
-      - run: npm login --scope=@pandapro-project --auth-type=legacy --registry=https://npm.pkg.github.com
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GT_TOKEN }}
+
+      - name: Configure .npmrc
+        run: |
+          echo "@pandapro-project:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GT_TOKEN }}" >> .npmrc
+
+      - name: Npm Login
+        run: npm login
+
+      - name: Npm Publish
+        run: npm publish
