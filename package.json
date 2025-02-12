@@ -1,6 +1,6 @@
 {
-  "name": "@browserbasehq/stagehand",
-  "version": "1.12.0",
+  "name": "@nstbrowser/stagehand",
+  "version": "1.0.0",
   "description": "An AI web browsing framework focused on simplicity and extensibility.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -8,6 +8,7 @@
   "scripts": {
     "2048": "npm run build-dom-scripts && tsx examples/2048.ts",
     "popup": "npm run build-dom-scripts && tsx examples/popup.ts",
+    "openai": "npm run build-dom-scripts && tsx examples/openai.ts",
     "example": "npm run build-dom-scripts && tsx examples/example.ts",
     "debug-url": "npm run build-dom-scripts && tsx examples/debugUrl.ts",
     "external-client": "npm run build-dom-scripts && tsx examples/external_client.ts",
@@ -35,7 +36,7 @@
     "lib/**"
   ],
   "keywords": [],
-  "author": "Browserbase",
+  "author": "nstbrowser <nstbrowser@gmail.com> (https://www.nstbrowser.io)",
   "license": "MIT",
   "devDependencies": {
     "@ai-sdk/google": "^1.0.13",
@@ -77,6 +78,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.27.3",
     "@browserbasehq/sdk": "^2.0.0",
+    "playwright": "^1.50.1",
     "ws": "^8.18.0",
     "zod-to-json-schema": "^3.23.5"
   },
@@ -87,10 +89,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/browserbase/stagehand.git"
+    "url": "git+https://github.com/pandapro-project/stagehand.git"
   },
   "bugs": {
-    "url": "https://github.com/browserbase/stagehand/issues"
+    "url": "https://github.com/pandapro-project/stagehand/issues"
   },
-  "homepage": "https://github.com/browserbase/stagehand#readme"
+  "homepage": "https://github.com/pandapro-project/stagehand#readme"
 }

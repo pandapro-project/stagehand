@@ -22,6 +22,9 @@ const StagehandConfig: ConstructorParams = {
   browserbaseSessionID:
     undefined /* Session ID for resuming Browserbase sessions */,
   modelName: "gpt-4o" /* Name of the model to use */,
+  browserlessSessionCreateParams: {
+    proxy: process.env.PROXY!,
+  },
   modelClientOptions: {
     apiKey: process.env.OPENAI_API_KEY,
   } /* Configuration options for the model client */,

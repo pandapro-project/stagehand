@@ -26,6 +26,19 @@ export interface ConstructorParams {
    * Instructions for stagehand.
    */
   systemPrompt?: string;
+  browserlessSessionCreateParams?: BrowserlessSessionCreateParams;
+}
+
+export interface BrowserlessSessionCreateParams {
+  proxy: string;
+  platform?: "linux" | "mac" | "windows";
+  kernel?: "chromium";
+  fingerprint?: {
+    [k in string]: string;
+  };
+  args?: {
+    [k in string]: string;
+  };
 }
 
 export interface InitOptions {
