@@ -39,8 +39,11 @@ jobs:
           echo "@pandapro-project:registry=https://npm.pkg.github.com" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GT_TOKEN }}" >> .npmrc
 
+      - name: View .npmrc
+        run: cat .npmrc  # 输出 .npmrc 文件内容
+
       - name: Npm Login
-        run: npm login
+        run: npm login --registry=https://npm.pkg.github.com --scope=@pandapro-project
 
       - name: Npm Publish
         run: npm publish
