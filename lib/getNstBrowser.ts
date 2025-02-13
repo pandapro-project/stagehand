@@ -71,19 +71,7 @@ export async function getNstBrowser(
     const context = browser.contexts()[0];
 
     return { browser, context, debugUrl, env, sessionUrl, sessionId };
-  } catch (e) {
-    logger({
-      category: "init",
-      message: "browserless session failed",
-      level: 2,
-      auxiliary: {
-        error: {
-          value: e,
-          type: "error",
-        },
-      },
-    });
-
+  } catch {
     throw 'Failed to connect to browserless';
   }
 }
