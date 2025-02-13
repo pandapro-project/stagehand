@@ -5,7 +5,6 @@ name: Node.js Package
 
 on:
   workflow_dispatch: # 允许手动触发
-  workflow_dispatch:  # 允许手动触发
   push:
     branches: [main]
   release:
@@ -14,9 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     permissions:
       contents: read
       packages: write
@@ -29,8 +25,6 @@ jobs:
           node-version: 20
           registry-url: "https://npm.pkg.github.com"
           scope: "@pandapro-project"
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@pandapro-project'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -48,5 +42,4 @@ jobs:
         
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
