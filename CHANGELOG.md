@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/pandapro-project/stagehand/compare/v1.0.3...v1.0.4) (2025-02-13)
+
+
+### Bug Fixes
+
+* handle connect browser failed ([55d581d](https://github.com/pandapro-project/stagehand/commit/55d581d4693ef0ff63695017c19cdd9b74a9c72d))
+
 ### 1.0.3 (2025-02-13)
 
 
