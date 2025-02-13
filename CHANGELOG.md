@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/pandapro-project/stagehand/compare/v1.0.0...v1.0.2) (2025-02-13)
+
+
+### Features
+
+* use sessionId connect ([41c6d73](https://github.com/pandapro-project/stagehand/commit/41c6d7363c1cffa2abc7dc09a9c8c7911884a7b5))
+
 ### [1.0.1](https://github.com/pandapro-project/stagehand/compare/v1.0.0...v1.0.1) (2025-02-13)
 
 
