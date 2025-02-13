@@ -433,8 +433,7 @@ export class Stagehand {
         this.browserbaseSessionID,
         this.logger,
         this.browserlessSessionCreateParams,
-      ).catch((e) => {
-        console.error("Error in init:", e);
+      ).catch(() => {
         const br: BrowserResult = {
           context: undefined,
           debugUrl: undefined,
@@ -444,6 +443,9 @@ export class Stagehand {
         };
         return br;
       });
+    if (!context) {
+      throw new Error("Failed to initialize browser context");
+    }
     this.intEnv = env;
     this.contextPath = contextPath;
     this.stagehandContext = await StagehandContext.init(context, this);
