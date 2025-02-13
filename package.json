@@ -1,6 +1,6 @@
 {
   "name": "@pandapro-project/stagehand",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "An AI web browsing framework focused on simplicity and extensibility.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -89,7 +89,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pandapro-project/stagehand.git"
+    "url": "https://github.com/pandapro-project/stagehand.git"
   },
   "bugs": {
     "url": "https://github.com/pandapro-project/stagehand/issues"
