@@ -5,7 +5,7 @@ import { AISdkClient } from "./external_clients/aisdk";
 import StagehandConfig from "@/stagehand.config";
 
 const openAI = createOpenAI({
-  apiKey: "sk-rcYjgZxhp4mXdGHunFDiOKDaqFu7ZDO5fQtCKnBGFjN9dHzZ",
+  apiKey: "your-openai-api-key",
   baseURL: "https://www.dmxapi.com/v1",
 });
 
