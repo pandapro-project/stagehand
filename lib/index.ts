@@ -348,8 +348,8 @@ export class Stagehand {
       systemPrompt,
       browserlessSessionCreateParams,
     }: ConstructorParams = {
-      env: "BROWSERBASE",
-    },
+        env: "BROWSERBASE",
+      },
   ) {
     this.externalLogger = logger || defaultLogger;
     this.enableCaching =
@@ -430,6 +430,7 @@ export class Stagehand {
       await getNstBrowser(
         this.apiKey,
         this.env,
+        this.browserbaseSessionID,
         this.logger,
         this.browserlessSessionCreateParams,
       ).catch((e) => {
