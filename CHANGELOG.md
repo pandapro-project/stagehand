@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.3 (2025-02-13)
+
+
+### Features
+
+* use nstbrowser ([841037a](https://github.com/pandapro-project/stagehand/commit/841037a3f0fc49a9e860affe28707bd111866832))
+* use sessionId connect ([9e68e1d](https://github.com/pandapro-project/stagehand/commit/9e68e1d2f52d6fb44d4252085817255f1a209f4b))
+
+
+### Bug Fixes
+
+* Export LLMClient types ([#388](https://github.com/pandapro-project/stagehand/issues/388)) ([e93561d](https://github.com/pandapro-project/stagehand/commit/e93561d7875210ce7bd7fe841fb52decf6011fb3))
+* **logger:** enable disabling logger ([#355](https://github.com/pandapro-project/stagehand/issues/355)) ([de9dfb0](https://github.com/pandapro-project/stagehand/commit/de9dfb0bcfc5c36bbdf3cc846a8cef515e407cc4))
+
 ### [1.0.2](https://github.com/pandapro-project/stagehand/compare/v1.0.0...v1.0.2) (2025-02-13)
 
 
