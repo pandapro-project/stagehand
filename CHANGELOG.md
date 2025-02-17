@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/pandapro-project/stagehand/compare/v1.0.5...v1.0.6) (2025-02-17)
+
+
+### Features
+
+* set custom fp ([56bedc4](https://github.com/pandapro-project/stagehand/commit/56bedc4e657da303fa4d342871c3f4d2da746d6a))
+
 ### [1.0.5](https://github.com/pandapro-project/stagehand/compare/v1.0.4...v1.0.5) (2025-02-17)
 
 
