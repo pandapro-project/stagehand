@@ -23,7 +23,6 @@ const StagehandConfig: ConstructorParams = {
     undefined /* Session ID for resuming Browserbase sessions */,
   modelName: "gpt-4o" /* Name of the model to use */,
   browserlessSessionCreateParams: {
-    proxy: process.env.PROXY!,
     fingerprint: {
       screen: {
         width: 1360,

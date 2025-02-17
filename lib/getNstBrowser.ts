@@ -77,7 +77,7 @@ export async function getNstBrowser(
 }
 
 async function connectToBrowserless(apiKey: string, query: URLSearchParams) {
-  const url = `https://less.nstbrowser.io/connect?${query.toString()}`;
+  const url = `https://less.nstbrowser.io/playground/connect?${query.toString()}`;
   try {
     const res = await fetch(url, {
       method: "GET",

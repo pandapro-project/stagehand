@@ -30,7 +30,7 @@ export interface ConstructorParams {
 }
 
 export interface BrowserlessSessionCreateParams {
-  proxy: string;
+  proxy?: string;
   platform?: "linux" | "mac" | "windows";
   kernel?: "chromium";
   fingerprint?: {
