@@ -24,6 +24,12 @@ const StagehandConfig: ConstructorParams = {
   modelName: "gpt-4o" /* Name of the model to use */,
   browserlessSessionCreateParams: {
     proxy: process.env.PROXY!,
+    fingerprint: {
+      screen: {
+        width: 1360,
+        height: 1080,
+      }
+    }
   },
   modelClientOptions: {
     apiKey: process.env.OPENAI_API_KEY,

@@ -34,10 +34,10 @@ export interface BrowserlessSessionCreateParams {
   platform?: "linux" | "mac" | "windows";
   kernel?: "chromium";
   fingerprint?: {
-    [k in string]: string;
+    [k in string]: any;
   };
   args?: {
-    [k in string]: string;
+    [k in string]: any;
   };
 }
 
