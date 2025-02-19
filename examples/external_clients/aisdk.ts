@@ -2,7 +2,6 @@ import {
   CoreAssistantMessage,
   CoreMessage,
   CoreSystemMessage,
-  CoreTool,
   CoreUserMessage,
   generateObject,
   generateText,
@@ -88,21 +87,16 @@ export class AISdkClient extends LLMClient {
       return response.object;
     }
 
-    const tools: Record<string, CoreTool> = {};
+    try {
+      const response = await generateText({
+        model: this.model,
+        messages: formattedMessages,
+        tools: options.toolZ,
+      });
 
-    for (const rawTool of options.tools) {
-      tools[rawTool.name] = {
-        description: rawTool.description,
-        parameters: rawTool.parameters,
-      };
+      return response as T;
+    } catch (e) {
+      console.error(e);
     }
-
-    const response = await generateText({
-      model: this.model,
-      messages: formattedMessages,
-      tools,
-    });
-
-    return response as T;
   }
 }

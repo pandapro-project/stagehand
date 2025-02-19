@@ -51,7 +51,7 @@ export async function getNstBrowser(
   });
 
   try {
-    const browser = await chromium.connectOverCDP(browserWSEndpoint);
+    const browser = await chromium.connectOverCDP(browserWSEndpoint, { timeout: 60000 });
 
     debugUrl = browserWSEndpoint;
     sessionUrl = `https://app.nstbrowser.io/app/browserless/${sessionId}`;

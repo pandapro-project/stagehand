@@ -1,7 +1,10 @@
 import { Browserbase } from "@browserbasehq/sdk";
+// import { chromium } from "@playwright/test";
 import { randomUUID } from "crypto";
 import dotenv from "dotenv";
 import fs from "fs";
+// import os from "os";
+// import path from "path";
 import { z } from "zod";
 import { BrowserResult } from "../types/browser";
 import { LogLine } from "../types/log";
@@ -443,6 +446,24 @@ export class Stagehand {
         };
         return br;
       });
+    // await getBrowser(
+    //   this.apiKey,
+    //   this.projectId,
+    //   this.env,
+    //   this.headless,
+    //   this.logger,
+    //   this.browserbaseSessionCreateParams,
+    //   this.browserbaseSessionID,
+    // ).catch(() => {
+    //   const br: BrowserResult = {
+    //     context: undefined,
+    //     debugUrl: undefined,
+    //     sessionUrl: undefined,
+    //     sessionId: undefined,
+    //     env: this.env,
+    //   };
+    //   return br;
+    // });
     if (!context) {
       throw new Error("Failed to initialize browser context");
     }

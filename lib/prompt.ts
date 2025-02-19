@@ -1,4 +1,6 @@
-import { LLMTool } from "../types/llm";
+import { tool } from 'ai'
+import { z } from 'zod'
+import { LLMTool, LLMToolZ } from "../types/llm";
 import { ChatMessage } from "./llm/LLMClient";
 
 // act
@@ -146,8 +148,8 @@ ${domElements}
     actUserPrompt += `
 # Variables
 ${Object.keys(variables)
-  .map((key) => `<|${key.toUpperCase()}|>`)
-  .join("\n")}
+        .map((key) => `<|${key.toUpperCase()}|>`)
+        .join("\n")}
 `;
   }
 
@@ -217,6 +219,28 @@ export const actTools: LLMTool[] = [
   },
 ];
 
+export const actToolsZ: LLMToolZ = {
+  doAction: tool({
+    type: "function",
+    description: "execute the next playwright step that directly accomplishes the goal",
+    parameters: z.object({
+      method: z.string().describe("The playwright function to call."),
+      element: z.number().describe("The element number to act on"),
+      args: z.array(z.string()).describe("The required arguments"),
+      step: z.string().describe("human readable description of the step that is taken in the past tense. Please be very detailed."),
+      why: z.string().describe("why is this step taken? how does it advance the goal?"),
+      completed: z.boolean().describe("true if the goal should be accomplished after this step"),
+    })
+  }),
+  skipSection: tool({
+    type: "function",
+    description: "skips this area of the webpage because the current goal cannot be accomplished here",
+    parameters: z.object({
+      reason: z.string().describe("reason that no action is taken")
+    })
+  })
+}
+
 // extract
 export function buildExtractSystemPrompt(
   isUsingPrintExtractedDataTool: boolean = false,
@@ -236,9 +260,8 @@ export function buildExtractSystemPrompt(
     : `A list of DOM elements to extract from.`;
 
   const instructions = `
-Print the exact text from the ${
-    useTextExtract ? "text-rendered webpage" : "DOM elements"
-  } with all symbols, characters, and endlines as is.
+Print the exact text from the ${useTextExtract ? "text-rendered webpage" : "DOM elements"
+    } with all symbols, characters, and endlines as is.
 Print null or an empty string if no new information is found.
   `.trim();
 
@@ -260,9 +283,8 @@ ONLY print the content using the print_extracted_data tool provided.
   );
 
   const content =
-    `${baseContent}${contentDetail}\n\n${instructions}\n${toolInstructions}${
-      additionalInstructions ? `\n\n${additionalInstructions}` : ""
-    }${userInstructions ? `\n\n${userInstructions}` : ""}`.replace(/\s+/g, " ");
+    `${baseContent}${contentDetail}\n\n${instructions}\n${toolInstructions}${additionalInstructions ? `\n\n${additionalInstructions}` : ""
+      }${userInstructions ? `\n\n${userInstructions}` : ""}`.replace(/\s+/g, " ");
 
   return {
     role: "system",
@@ -359,11 +381,10 @@ export function buildObserveSystemPrompt(
 You are helping the user automate the browser by finding elements based on what the user wants to observe in the page.
 You will be given:
 1. a instruction of elements to observe
-2. ${
-    isUsingAccessibilityTree
+2. ${isUsingAccessibilityTree
       ? "a hierarchical accessibility tree showing the semantic structure of the page. The tree is a hybrid of the DOM and the accessibility tree."
       : "a numbered list of possible elements"
-  }
+    }
 
 Return an array of elements that match the instruction if they exist, otherwise return an empty array.`;
   const content = observeSystemPrompt.replace(/\s+/g, " ");

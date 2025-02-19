@@ -225,7 +225,7 @@ export class StagehandActHandler {
       },
     });
 
-    if (method === "scrollIntoView") {
+    if (["scrollIntoView", "scrollTo"].includes(method)) {
       this.logger({
         category: "action",
         message: "scrolling element into view",

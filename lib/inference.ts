@@ -4,7 +4,7 @@ import { VerifyActCompletionParams } from "../types/inference";
 import { LogLine } from "../types/log";
 import { ChatMessage, LLMClient } from "./llm/LLMClient";
 import {
-  actTools,
+  actToolsZ,
   buildActSystemPrompt,
   buildActUserPrompt,
   buildExtractSystemPrompt,
@@ -107,20 +107,20 @@ export async function act({
       frequency_penalty: 0,
       presence_penalty: 0,
       tool_choice: "auto" as const,
-      tools: actTools,
+      toolZ: actToolsZ,
       requestId,
     },
     logger,
   });
 
-  const toolCalls = response.choices[0].message.tool_calls;
+  const toolCalls = response.steps[0].toolCalls;
 
   if (toolCalls && toolCalls.length > 0) {
-    if (toolCalls[0].function.name === "skipSection") {
+    if (toolCalls[0].toolName === "skipSection") {
       return null;
     }
 
-    return JSON.parse(toolCalls[0].function.arguments);
+    return toolCalls[0].args;
   } else {
     if (retries >= 2) {
       logger({
@@ -296,19 +296,19 @@ export async function observe({
             ),
           ...(returnAction
             ? {
-                method: z
+              method: z
+                .string()
+                .describe(
+                  "the candidate method/action to interact with the element. Select one of the available Playwright interaction methods.",
+                ),
+              arguments: z.array(
+                z
                   .string()
                   .describe(
-                    "the candidate method/action to interact with the element. Select one of the available Playwright interaction methods.",
+                    "the arguments to pass to the method. For example, for a click, the arguments are empty, but for a fill, the arguments are the value to fill in.",
                   ),
-                arguments: z.array(
-                  z
-                    .string()
-                    .describe(
-                      "the arguments to pass to the method. For example, for a click, the arguments are empty, but for a fill, the arguments are the value to fill in.",
-                    ),
-                ),
-              }
+              ),
+            }
             : {}),
         }),
       )
@@ -357,10 +357,10 @@ export async function observe({
 
         return returnAction
           ? {
-              ...base,
-              method: String(el.method),
-              arguments: el.arguments,
-            }
+            ...base,
+            method: String(el.method),
+            arguments: el.arguments,
+          }
           : base;
       }) ?? [],
   } satisfies { elements: { elementId: number; description: string }[] };

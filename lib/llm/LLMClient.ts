@@ -1,5 +1,5 @@
 import { ZodType } from "zod";
-import { LLMTool } from "../../types/llm";
+import { LLMTool, LLMToolZ } from "../../types/llm";
 import { AvailableModel, ClientOptions } from "../../types/model";
 import { LogLine } from "../../types/log";
 
@@ -41,9 +41,28 @@ export interface ChatCompletionOptions {
     schema: ZodType;
   };
   tools?: LLMTool[];
+  toolZ?: LLMToolZ;
   tool_choice?: "auto" | "none" | "required";
   maxTokens?: number;
   requestId: string;
+}
+
+export type LLMResponseStepToolCall = {
+  type: string;
+  toolCallId: string;
+  toolName: string;
+  args: {
+    method: string;
+    element: 0;
+    args: any[];
+    step: string;
+    why: string;
+    completed: boolean;
+  }
+}
+
+export type LLMResponseStep = {
+  toolCalls: LLMResponseStepToolCall[]
 }
 
 export type LLMResponse = {
@@ -67,6 +86,7 @@ export type LLMResponse = {
     };
     finish_reason: string;
   }[];
+  steps?: LLMResponseStep[];
   usage: {
     prompt_tokens: number;
     completion_tokens: number;

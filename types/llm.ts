@@ -4,3 +4,7 @@ export interface LLMTool {
   description: string;
   parameters: Record<string, unknown>;
 }
+
+export interface LLMToolZ {
+  [k: string]: any;
+}
