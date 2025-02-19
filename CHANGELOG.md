@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.7](https://github.com/pandapro-project/stagehand/compare/v1.0.6...v1.0.7) (2025-02-19)
+
+
+### Bug Fixes
+
+* LLM response data structure ([7716158](https://github.com/pandapro-project/stagehand/commit/77161582387e94bb50a8f8efc10eea1639a060c7))
+
 ### [1.0.6](https://github.com/pandapro-project/stagehand/compare/v1.0.5...v1.0.6) (2025-02-17)
 
 
