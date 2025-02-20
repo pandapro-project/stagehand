@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.8](https://github.com/pandapro-project/stagehand/compare/v1.0.7...v1.0.8) (2025-02-20)
+
+
+### Features
+
+* add use log option ([a411a00](https://github.com/pandapro-project/stagehand/commit/a411a005a66bb8af91f09f73eb3a0f45c864cb2a))
+
 ### [1.0.7](https://github.com/pandapro-project/stagehand/compare/v1.0.6...v1.0.7) (2025-02-19)
 
 
