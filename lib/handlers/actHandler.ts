@@ -321,6 +321,20 @@ export class StagehandActHandler {
       }
     } else if (method === "press") {
       try {
+        if (!args.length) {
+          this.logger({
+            category: "action",
+            message: "no key provided for press",
+            level: 1,
+            auxiliary: {
+              xpath: {
+                value: xpath,
+                type: "string",
+              },
+            },
+          });
+          return;
+        }
         const key = args[0]?.toString();
         await this.stagehandPage.page.keyboard.press(key);
       } catch (e) {
@@ -438,7 +452,8 @@ export class StagehandActHandler {
           },
         });
 
-        throw new PlaywrightCommandException(e.message);
+        return true;
+        // throw new PlaywrightCommandException(e.message);
       }
 
       // Handle navigation if a new page is opened
@@ -1282,12 +1297,16 @@ export class StagehandActHandler {
           });
         }
 
-        await this._performPlaywrightMethod(
+        const perform = await this._performPlaywrightMethod(
           method,
           args,
           foundXpath,
           domSettleTimeoutMs,
         );
+
+        if (perform) {
+          response.completed = true;
+        }
 
         const newStepString =
           (!steps.endsWith("\n") ? "\n" : "") +

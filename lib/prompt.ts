@@ -224,7 +224,7 @@ export const actToolsZ: LLMToolZ = {
     type: "function",
     description: "execute the next playwright step that directly accomplishes the goal",
     parameters: z.object({
-      method: z.string().describe("The playwright function to call."),
+      method: z.string().describe("The playwright function to call. Such as 'scrollIntoView', 'fill', 'type', 'press', 'click' or another playwright function."),
       element: z.number().describe("The element number to act on"),
       args: z.array(z.string()).describe("The required arguments"),
       step: z.string().describe("human readable description of the step that is taken in the past tense. Please be very detailed."),
@@ -316,7 +316,7 @@ const refineSystemPrompt = `You are tasked with refining and filtering informati
 1. Remove exact duplicates for elements in arrays and objects.
 2. For text fields, append or update relevant text if the new content is an extension, replacement, or continuation.
 3. For non-text fields (e.g., numbers, booleans), update with new values if they differ.
-4. Add any completely new fields or objects.
+4. Add any completely new fields or objects ONLY IF they correspond to the provided schema.
 
 Return the updated content that includes both the previous content and the new, non-duplicate, or extended information.`;
 

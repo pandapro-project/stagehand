@@ -303,9 +303,9 @@ const DEFAULT_MODEL_NAME = "gpt-4o";
 //   });
 // }
 
-const defaultLogger = async (logLine: LogLine) => {
-  console.log(logLineToString(logLine));
-};
+// const defaultLogger = async (logLine: LogLine) => {
+//   console.log(logLineToString(logLine));
+// };
 
 export class Stagehand {
   private stagehandPage!: StagehandPage;
@@ -330,6 +330,7 @@ export class Stagehand {
   private llmClient: LLMClient;
   private userProvidedInstructions?: string;
   private browserlessSessionCreateParams?: BrowserlessSessionCreateParams;
+  private useLog: boolean = true;
 
   constructor(
     {
@@ -350,11 +351,12 @@ export class Stagehand {
       modelClientOptions,
       systemPrompt,
       browserlessSessionCreateParams,
+      useLog,
     }: ConstructorParams = {
         env: "BROWSERBASE",
       },
   ) {
-    this.externalLogger = logger || defaultLogger;
+    this.externalLogger = logger || this.defaultLogger;
     this.enableCaching =
       enableCaching ??
       (process.env.ENABLE_CACHING && process.env.ENABLE_CACHING === "true");
@@ -385,7 +387,13 @@ export class Stagehand {
     this.browserbaseSessionID = browserbaseSessionID;
     this.userProvidedInstructions = systemPrompt;
     this.browserlessSessionCreateParams = browserlessSessionCreateParams;
+    this.useLog = useLog;
   }
+
+  public async defaultLogger(logLine: LogLine) {
+    if (!this.useLog) return;
+    console.log(logLineToString(logLine));
+  };
 
   public get logger(): (logLine: LogLine) => void {
     return (logLine: LogLine) => {
@@ -537,6 +545,7 @@ export class Stagehand {
   private is_processing_browserbase_logs: boolean = false;
 
   log(logObj: LogLine): void {
+    if (!this.useLog) return;
     logObj.level = logObj.level ?? 1;
 
     // Normal Logging

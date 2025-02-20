@@ -15,6 +15,7 @@ async function example() {
     llmClient: new AISdkClient({
       model: openAI.chat("gpt-4o-mini"),
     }),
+    useLog: false
   });
 
   await stagehand.init();
