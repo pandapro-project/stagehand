@@ -9,7 +9,7 @@ export async function getNstBrowser(
   browserlessSessionId: string | undefined,
   logger: (message: LogLine) => void,
   browserlessSessionCreateParams?: BrowserlessSessionCreateParams,
-  ip: string,
+  ip?: string,
 ): Promise<BrowserResult> {
   if (!apiKey) {
     throw new Error("NSTBROWSER_API_KEY is required.");

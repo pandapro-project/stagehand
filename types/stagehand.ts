@@ -28,7 +28,7 @@ export interface ConstructorParams {
   systemPrompt?: string;
   browserlessSessionCreateParams?: BrowserlessSessionCreateParams;
   useLog?: boolean;
-  ip: string
+  ip?: string
 }
 
 export interface BrowserlessSessionCreateParams {
