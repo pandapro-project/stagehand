@@ -331,6 +331,7 @@ export class Stagehand {
   private userProvidedInstructions?: string;
   private browserlessSessionCreateParams?: BrowserlessSessionCreateParams;
   private useLog: boolean = true;
+  private ip: string = '';
 
   constructor(
     {
@@ -352,6 +353,7 @@ export class Stagehand {
       systemPrompt,
       browserlessSessionCreateParams,
       useLog,
+      ip,
     }: ConstructorParams = {
         env: "BROWSERBASE",
       },
@@ -388,6 +390,7 @@ export class Stagehand {
     this.userProvidedInstructions = systemPrompt;
     this.browserlessSessionCreateParams = browserlessSessionCreateParams;
     this.useLog = useLog;
+    this.ip = ip;
   }
 
   public async defaultLogger(logLine: LogLine) {
@@ -444,6 +447,7 @@ export class Stagehand {
         this.browserbaseSessionID,
         this.logger,
         this.browserlessSessionCreateParams,
+        this.ip,
       ).catch(() => {
         const br: BrowserResult = {
           context: undefined,

@@ -9,6 +9,7 @@ export async function getNstBrowser(
   browserlessSessionId: string | undefined,
   logger: (message: LogLine) => void,
   browserlessSessionCreateParams?: BrowserlessSessionCreateParams,
+  ip: string,
 ): Promise<BrowserResult> {
   if (!apiKey) {
     throw new Error("NSTBROWSER_API_KEY is required.");
@@ -17,7 +18,7 @@ export async function getNstBrowser(
   let debugUrl: string | undefined = undefined;
   let sessionUrl: string | undefined = undefined;
   let sessionId: string | undefined = browserlessSessionId;
-  let browserWSEndpoint = `wss://less.nstbrowser.io/connect/session/${browserlessSessionId}?x-api-key=${apiKey}`;
+  let browserWSEndpoint = `wss://less.nstbrowser.io/connect/session/${browserlessSessionId}?x-api-key=${apiKey}&ip=${ip}`;
 
   if (!browserlessSessionId) {
     const config = {
@@ -27,6 +28,7 @@ export async function getNstBrowser(
     const query = new URLSearchParams({
       token: apiKey, // required
       config: JSON.stringify(config),
+      ip, // required
     });
 
     const data = await connectToBrowserless(apiKey, query);
@@ -34,7 +36,7 @@ export async function getNstBrowser(
       throw new Error("Connect to browserless failed.");
     }
 
-    browserWSEndpoint = `wss://less.nstbrowser.io/connect/session/${data.id}?x-api-key=${apiKey}`;
+    browserWSEndpoint = `wss://less.nstbrowser.io/connect/session/${data.id}?x-api-key=${apiKey}&ip=${ip}`;
     sessionId = data.id;
   }
 
