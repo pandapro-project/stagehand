@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.9](https://github.com/pandapro-project/stagehand/compare/v1.0.8...v1.0.9) (2025-02-22)
+
+
+### Features
+
+* connect to browserless with ip ([7e9982f](https://github.com/pandapro-project/stagehand/commit/7e9982fd4bba635d009db46dd4701af9d8d9b5df))
+
 ### [1.0.8](https://github.com/pandapro-project/stagehand/compare/v1.0.7...v1.0.8) (2025-02-20)
 
 
